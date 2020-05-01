@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Add a Form element</h1>
+        <form action="/addelement" method="POST">
+            <input type="text" placeholder="Add name" name="name" />
+            <input type="text" placeholder="Add value" name="value" />
+            <button type="submit">Add element</button>
+        </form>
+    <h1>Delete a form element by title</h1>
+        <form action="/removeelement" method="POST">
+            <input type="text" placeholder="Remove name" name="name" />
+            <button type="submit">Add element</button>
+        </form>
+    <h1>View forms</h1>
+    <% for(var j=0; j<test.list.length; j++) { %>
+        <b>Name:</b> <%=test.list[j].name%> <b>Value:</b> <%=test.list[j].value%> <br>
+    <% } %>
+</body>
+</html>
