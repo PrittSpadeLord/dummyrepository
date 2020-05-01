@@ -59,7 +59,7 @@ var db;
 MongoClient.connect('insert-url-here', {useNewUrlParser: true, useUnifiedTopology: true}, (err, client) => {
     if(err) console.log(err);
 
-    console.log('Connected to Database!');
+    console.log('Connected to Database! View this website on http://localhost:8080/');
     db = client.db('onebill');
 
     db.collection('test').find().toArray((err, result) => {
