@@ -1,0 +1,60 @@
+
+###
+GET http://localhost:3000/api/subscriptionListing
+###
+POST http://localhost:3000/api
+Content-Type: application/json
+
+{
+           "accessDenied": false,
+            "successful": true,
+            "locale": null,
+            "clientValidationErrorInfo": [],
+            "charge": null,
+            "activationStart": 1520371000000,
+            "renewDate": 1522591000000,
+            "activationEnd": null,
+            "identifier": "SUB332-Test-product",
+            "subsServiceInstanceId": 2602,
+            "subscriptionType": "MONTHLY",
+            "productDescription": "<p>Test-product<br></p>",
+            "productImage": null,
+            "quantity": 1,
+            "currencySymbol": "$",
+            "statusString": "ACTIVE",
+            "serviceTypeId": 1244,
+            "bundleSubscriptionInstances": null,
+            "bundled": false
+}
+
+###
+
+POST http://localhost:3000/api/subServiceInstance
+Content-Type: application/json
+
+{
+         "productName": "Test-product",
+        "priceplanName": "Test-product-pp",
+        "identifier": "SUB3102-Test-product",
+        "productImage": null,
+        "quantity": 1,
+        "status": 1001,
+        "chargingFrequency": "MONTHLY",
+        "amount": 100,
+        "lastChargeDate": 1520361000000,
+        "nextChargeDate": 1522521000000,
+        "expirationDate": null,
+        "activationStartDate": 1520361000000,
+        "clientSubscriptionAttributesList": [],
+        "statusString": "ACTIVE",
+        "currencySymbol": "$",
+        "productId": "1003",
+        "addOnSubscriptionOffers": [],
+        "addOnLink": "https://app.onebillsoftware.com/catalog.do?id=b25lYmlsbElkPXRlYW0yZG9jJnBhcnR5Um9sZUlkPTImaW5zdGFuY2VJZD0yNjAy",
+        "markup": false,
+        "usagePresent": false,
+        "subServiceInstanceId":2602
+}
+
+###
+GET http://localhost:3000/api/getsubscription/2602
