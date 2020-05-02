@@ -3,6 +3,9 @@ const router=express.Router();
 const Subscription = require('../models/subscription.js');
 const SubscriptionInfo=require('../models/subscriptionInfo.js')
 const getSubscriptionById=require('../middleware/getSubscription.js')
+const getProfile=require('../middleware/getProfile.js')
+const authenticateUser=require('../middleware/authenticateUser.js')
+const Profile=require('../models/profile.js')
 
 
 router.get('/subscriptionListing',async (req,res)=>{
@@ -24,7 +27,14 @@ router.get('/getsubscription/:id',getSubscriptionById,(req,res)=>{
     res.send(res.subscriptionInfo);
 })
 
+router.get('/profileDetails/:username',getProfile,(req,res)=>{
+    res.send(res.profile);
 
+})
+
+router.get('/j_spring_security_check',authenticateUser,(req,res)=>{
+    res.send(res.profile);
+})
 
 
 
@@ -36,28 +46,7 @@ router.get('/getsubscription/:id',getSubscriptionById,(req,res)=>{
 
 //Input data
 router.post('/',async (req,res)=>{
-    const subscription=new Subscription({
-        "accessDenied": req.body.accessDenied,
-            "successful": req.body.successful,
-            "locale": req.body.locale,
-            "clientValidationErrorInfo": req.body.clientValidationErrorInfo,
-            "charge": req.body.charge,
-            "activationStart": req.body.activationStart,
-            "renewDate": req.body.renewDate,
-            "activationEnd": req.body.activationEnd,
-            "identifier": req.body.identifier,
-            "subsServiceInstanceId": req.body.subsServiceInstanceId,
-            "subscriptionType": req.body.subscriptionType,
-            "productDescription": req.body.productDescription,
-            "productImage":req.body.productImage,
-            "quantity": req.body.quantity,
-            "currencySymbol": req.body.currencySymbol,
-            "statusString": req.body.statusString,
-            "serviceTypeId": req.body.serviceTypeId,
-            "bundleSubscriptionInstances": req.body.bundleSubscriptionInstances,
-            "bundled":req.body.bundled
-    
-    });
+    const subscription=new Subscription(req.body);
     try{
         const newSubscription= await subscription.save();
         res.send(201,newSubscription);
@@ -68,30 +57,7 @@ router.post('/',async (req,res)=>{
 })
 
 router.post('/subServiceInstance',async (req,res)=>{
-    const subscriptionInfo=new SubscriptionInfo({
-        "productName": req.body.productName,
-        "priceplanName": req.body.priceplanName,
-        "identifier": req.body.identifier,
-        "productImage": req.body.productImage,
-        "quantity": req.body.quantity,
-        "status": req.body.status,
-        "chargingFrequency": req.body.chargingFrequency,
-        "amount": req.body.amount,
-        "lastChargeDate": req.body.lastChargeDate,
-        "nextChargeDate": req.body.nextChargeDate,
-        "expirationDate": req.body.expirationDate,
-        "activationStartDate": req.body.activationStartDate,
-        "clientSubscriptionAttributesList":req.body.clientSubscriptionAttributesList,
-        "statusString": req.body.statusString,
-        "currencySymbol": req.body.currencySymbol,
-        "productId": req.body.productId,
-        "addOnSubscriptionOffers": req.body.addOnSubscriptionOffers,
-        "addOnLink": req.body.addOnLink,
-        "markup": req.body.markup,
-        "usagePresent": req.body.usagePresent,
-        "subServiceInstanceId":req.body.subServiceInstanceId
-    
-    });
+    const subscriptionInfo=new SubscriptionInfo(req.body);
     try{
         const newSubscriptionInfo= await subscriptionInfo.save();
         res.send(201,newSubscriptionInfo);
@@ -100,6 +66,20 @@ router.post('/subServiceInstance',async (req,res)=>{
     }
     
 })
+
+
+router.post('/profileDetails',async (req,res)=>{
+    const profile=new Profile(req.body);
+    try{
+        const newProfile= await profile.save();
+        res.send(201,newProfile);
+    }catch(err){
+        res.status(400).json({message:err.message});
+    }
+    
+})
+
+
 
 
 module.exports=router;
