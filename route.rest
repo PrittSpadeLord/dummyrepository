@@ -58,3 +58,139 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3000/api/getsubscription/2602
+
+
+###
+POST http://localhost:3000/api/profileDetails
+Content-Type: application/json
+
+{
+        "accessDenied": false,
+        "successful": true,
+        "locale": null,
+        "clientValidationErrorInfo": [],
+        "partyId": "1405",
+        "sellerId": null,
+        "accountNumber": "SR2104",
+        "name": "Jack Borne",
+        "partyRoleId": "1405",
+        "primaryCurrencyId": null,
+        "firstName": null,
+        "lastName": null,
+        "emailId": null,
+        "contactNumber": null,
+        "password": "admin",
+        "confirmPassword": null,
+        "userName": "admin",
+        "currencySymbol": null,
+        "accountCreatedDate": null,
+        "csrfToken": null,
+        "contactType": null,
+        "cellContactNumber": null,
+        "alternateContactNumber": null,
+        "designation": null,
+        "addressLine1": null,
+        "addressLine2": null,
+        "city": null,
+        "zipCode": null,
+        "state": null,
+        "county": null,
+        "country": null,
+        "zipCodeExtension": null,
+        "profileImageName": null,
+        "base64ProfileImage": null,
+        "selfcareRegistrationConfig": false,
+        "clientAccountAttributeList": null,
+        "clientCustomAttributeDTOs": null,
+        "clientKYCAttributeDTOs": null,
+        "accountId": null,
+        "partyType": 1001,
+        "partyTypeString": "INDIVIDUAL",
+        "partyRoleTypeString": null,
+        "accImageByteStringURL": null,
+        "lstAddresses": [
+            {
+                "locale": null,
+                "partyRoleId": null,
+                "partyHeader": null,
+                "id": "1405",
+                "addLine1": "ADDR-1",
+                "addLine2": null,
+                "city": "NYC",
+                "state": "NY",
+                "county": null,
+                "country": "UNITED STATES",
+                "zip": "10010",
+                "zipCodeExtension": null,
+                "isDefaultBilling": true,
+                "isDefaultShipping": true
+            }
+        ],
+        "clientCustomerContactDTO": {
+            "id": "1406",
+            "salutation": null,
+            "firstName": "Jack",
+            "lastName": "Borne",
+            "contactType": null,
+            "userName": "Jack123",
+            "contactNumber": null,
+            "emailId": "obcore3_34@onebill.net",
+            "faceBookUserName": null,
+            "type": 0,
+            "locale": "en_US",
+            "clientCommunicationDTOList": [
+                {
+                    "id": "1408",
+                    "contactId": null,
+                    "value": "obcore3_34@onebill.net",
+                    "type": "EMAIL"
+                }
+            ],
+            "cellContactNumber": null,
+            "alternateContactNumber": null,
+            "designation": ""
+        },
+        "clientCustomerPayInfo": null,
+        "clientCCProfileInfoList": [
+            {
+                "paymentProfileId": "2",
+                "referenceKey": null,
+                "cardNumber": "**** **** **** 1111",
+                "cardType": "VISA",
+                "cardExpiryMonth": null,
+                "cardExpiryYear": null,
+                "cardExpiryDate": null,
+                "firstName": "Jack",
+                "lastName": "Borne",
+                "expired": false,
+                "default": true
+            }
+        ],
+        "clientEcheckProfileInfoList": [],
+        "isPayInfoModify": false,
+        "billingDom": 1,
+        "authorizedPaymentLimit": null,
+        "dateFormat": null,
+        "currencyId": null,
+        "language": null,
+        "timeZone": null,
+        "dataFormatAllowedValues": null,
+        "defaultCurrencyId": "840",
+        "defaultPaymentProfileId": null,
+        "currentDateAsString": null,
+        "primaryCurrency": 840,
+        "precision": null,
+        "clientAccountAttributesList": [],
+        "notifyInvoice": null,
+        "authenticationResponse": null,
+        "cardNumberUpdateEnabled": true,
+        "parentSponsored": false
+}
+
+
+
+###
+GET http://localhost:3000/api/profileDetails/admin
+
+###
+GET http://localhost:3000/api/j_spring_security_check/?username=admin&password=admin
