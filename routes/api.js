@@ -3,6 +3,7 @@ const router=express.Router();
 const Subscription = require('../models/subscription.js');
 const SubscriptionInfo=require('../models/subscriptionInfo.js')
 const getSubscriptionById=require('../middleware/getSubscription.js')
+const Invoice = require('../models/invoice.js');
 const getProfile=require('../middleware/getProfile.js')
 const authenticateUser=require('../middleware/authenticateUser.js')
 const Profile=require('../models/profile.js')
@@ -25,6 +26,25 @@ router.get('/subscriptionListing',async (req,res)=>{
 
 router.get('/getsubscription/:id',getSubscriptionById,(req,res)=>{
     res.send(res.subscriptionInfo);
+})
+
+router.get('/invoiceListing',async (req,res)=>{
+    try{
+        const invoicess=await Invoice.find();
+        res.json({
+            "accessDenied": false,
+            "successful": true,
+            "locale": null,
+            "clientValidationErrorInfo": [],
+            "clientInvoiceInfoList": invoices,
+            "paymentProfRefKey": null,
+            "currencyCode": null,
+            "opgEnabled": false
+        });
+    }
+    catch{
+        res.status(500).json({message:err.message});
+    }
 })
 
 router.get('/profileDetails/:username',getProfile,(req,res)=>{
