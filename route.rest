@@ -194,3 +194,40 @@ GET http://localhost:3000/api/profileDetails/admin
 
 ###
 GET http://localhost:3000/api/j_spring_security_check/?username=admin&password=admin
+###
+GET http://localhost:3000/api/invoiceListing
+
+###
+POST http://localhost:3000/api/invoiceListing
+Content-Type: application/json
+
+{
+            "accessDenied": false,
+            "successful": true,
+            "locale": null,
+            "clientValidationErrorInfo": [],
+            "invoiceNumber": "IN4603",
+            "currency": "$",
+            "status": "Pay",
+            "amount": 80.65,
+            "dueAmount": 80.65,
+            "displayDueAmount": null,
+            "usageExported": 0,
+            "exportStatus": null,
+            "invoiceId": null,
+            "templateContents": null,
+            "formattedData": null,
+            "cardType": "VISA",
+            "cardNumber": "**** **** **** 1111",
+            "dueFlag": "true",
+            "invoiceDate": "2018-03-13",
+            "invoiceDueDate": "2018-03-28",
+            "isParentPaying": "false",
+            "orderId": null,
+            "partyRoleId": null,
+            "subscriberId": null,
+            "fileContent": null,
+            "fileName": null,
+            "savedInCloud": false,
+            "payTmEnabled": false
+        }
