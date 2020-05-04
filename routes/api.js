@@ -30,7 +30,7 @@ router.get('/getsubscription/:id',getSubscriptionById,(req,res)=>{
 
 router.get('/invoiceListing',async (req,res)=>{
     try{
-        const invoicess=await Invoice.find();
+        const invoices=await Invoice.find();
         res.json({
             "accessDenied": false,
             "successful": true,
@@ -42,7 +42,7 @@ router.get('/invoiceListing',async (req,res)=>{
             "opgEnabled": false
         });
     }
-    catch{
+    catch(err){
         res.status(500).json({message:err.message});
     }
 })
@@ -99,7 +99,15 @@ router.post('/profileDetails',async (req,res)=>{
     
 })
 
-
+router.post('/invoiceListing',async (req,res)=>{
+    const invoice=new Invoice(req.body);
+    try{
+        const newInvoice= await invoice.save();
+        res.send(201,newInvoice);
+    }catch(err){
+        res.status(500).json({message:err.message});
+    }
+})
 
 
 module.exports=router;
