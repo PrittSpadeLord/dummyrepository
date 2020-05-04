@@ -3,7 +3,9 @@ const router=express.Router();
 const Subscription = require('../models/subscription.js');
 const SubscriptionInfo=require('../models/subscriptionInfo.js')
 const getSubscriptionById=require('../middleware/getSubscription.js')
-const Invoice = require('../models/invoice.js');
+const Invoice = require('../models/invoice.js')
+const InvoieInfo = require('../models/invoiceInfo.js');
+const getInvoiceByNumber = require('../middleware/getInvoice.js')
 const getProfile=require('../middleware/getProfile.js')
 const authenticateUser=require('../middleware/authenticateUser.js')
 const Profile=require('../models/profile.js')
@@ -45,6 +47,10 @@ router.get('/invoiceListing',async (req,res)=>{
     catch{
         res.status(500).json({message:err.message});
     }
+})
+
+router.get('/getinvoice/:number', getInvoiceByNumber, (req,res)=>{
+    res.send(res.invoiceInfo);
 })
 
 router.get('/profileDetails/:username',getProfile,(req,res)=>{
