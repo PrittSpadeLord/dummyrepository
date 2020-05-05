@@ -3,17 +3,22 @@ const InvoiceInfo=require('../models/invoiceInfo.js')
 async function getSubscriptionById(req,res,next){
     let invoiceInfo;
     try{
-        //I have no idea!
+        console.log(req.params.number);
+
+        invoiceInfo = await InvoiceInfo.find({number:req.params.number});
+        if(invoiceInfo==null){
+            return res.status(404).json({message: 'Cannot find invoice'});
+        }
     }
     catch(err) {
         return res.status(500).json({message: err.message});
     }
-    res.subscriptionInfo = {
+    res.invoiceInfo = {
         "accessDenied": false,
         "successful": true,
         "locale": null,
         "clientValidationErrorInfo": [],
-        "invoiceViewHtml": invoiceInfo
+        "invoiceViewHtml": invoiceInfo.html
     }
 
   next();
