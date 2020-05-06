@@ -1,6 +1,6 @@
 const InvoiceInfo=require('../models/invoiceInfo.js')
 
-async function getSubscriptionById(req,res,next){
+async function getInvoiceByNumber(req,res,next){
     let invoiceInfo;
     try{
         console.log(req.params.number);

@@ -10,8 +10,7 @@ const getProfile=require('../middleware/getProfile.js')
 const authenticateUser=require('../middleware/authenticateUser.js')
 const Profile=require('../models/profile.js')
 
-
-router.get('/subscriptionListing',async (req,res)=>{
+router.get('/subscriptionListing', async (req,res)=>{
     try{
         const subscriptions=await Subscription.find();
         res.json({ "accessDenied": false,
