@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const invoiceInfoSchema = new mongoose.Schema({
     html: String,
-    number: Number
+    number: String
 });
 
 module.exports = mongoose.model('InvoiceInfo', invoiceInfoSchema);
