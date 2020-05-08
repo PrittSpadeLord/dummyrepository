@@ -9,6 +9,9 @@ const getInvoiceByNumber = require('../middleware/getInvoice.js')
 const getProfile=require('../middleware/getProfile.js')
 const authenticateUser=require('../middleware/authenticateUser.js')
 const Profile=require('../models/profile.js')
+const Order = require('../models/order.js');
+const OrderInfo = require('../models/orderInfo.js');
+const getOrderByNumber = require('../middleware/getOrder.js');
 
 router.get('/subscriptionListing', async (req,res)=>{
     try{
@@ -60,6 +63,26 @@ router.get('/profileDetails/:username',getProfile,(req,res)=>{
 router.get('/j_spring_security_check',authenticateUser,(req,res)=>{
     res.send(res.profile);
 })
+
+router.get('/orderListing',async (req,res)=>{
+    try{
+        const orders = await Order.find();
+        res.json({
+            "accessDenied": false,
+            "successful": true,
+            "locale": null,
+            "clientValidationErrorInfo": [],
+            "clientOrderInfoList": orders
+        });
+    }
+    catch(err){
+        res.status(500).json({message:err.message});
+    }
+})
+
+router.get('/getorder/:number', async (req, res) => {
+    res.send(res.orderInfo);
+});
 
 
 

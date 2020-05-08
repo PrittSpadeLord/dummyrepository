@@ -14,6 +14,7 @@ async function getInvoiceByNumber(req,res,next){
     catch(err) {
         return res.status(500).json({message: err.message});
     }
+
     res.invoiceInfo = {
         "accessDenied": false,
         "successful": true,
@@ -22,7 +23,7 @@ async function getInvoiceByNumber(req,res,next){
         "invoiceViewHtml": invoiceInfo.html
     }
 
-  next();
+    next();
 }
 
 module.exports = getInvoiceByNumber;
