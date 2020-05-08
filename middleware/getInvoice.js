@@ -2,6 +2,7 @@ const InvoiceInfo=require('../models/invoiceInfo.js')
 
 async function getInvoiceByNumber(req,res,next){
     let invoiceInfo;
+    
     try{
         console.log(req.params.number);
 
