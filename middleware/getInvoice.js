@@ -5,7 +5,7 @@ async function getInvoiceByNumber(req,res,next){
     try{
         console.log(req.params.number);
 
-        invoiceInfo = await InvoiceInfo.find({number:req.params.number});
+        invoiceInfo = await InvoiceInfo.find({invoiceNumber:req.params.number});
         if(invoiceInfo==null){
             return res.status(404).json({message: 'Cannot find invoice'});
         }
