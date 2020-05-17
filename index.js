@@ -15,5 +15,5 @@ app.use(express.json());
 const onebillRouter=require('./routes/api');
 app.use('/api',onebillRouter);
 
-var port = process.env.PORT||3000;
-app.listen(port, ()=>console.log('Server started on port ' + port));
+var port = process.env.PORT||3214;
+app.listen(port, ()=>console.log(`http://localhost:${port}`));

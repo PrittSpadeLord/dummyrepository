@@ -14,6 +14,8 @@ const OrderInfo = require('../models/orderInfo.js');
 const getOrderByNumber = require('../middleware/getOrder.js');
 
 router.get('/subscriptionListing', async (req,res)=>{
+    console.log(req.headers);
+
     try{
         const subscriptions=await Subscription.find();
         res.json({ "accessDenied": false,
@@ -32,7 +34,7 @@ router.get('/getsubscription/:id',getSubscriptionById,(req,res)=>{
     res.send(res.subscriptionInfo);
 })
 
-router.get('/invoiceListing',async (req,res)=>{
+router.get('/selfcareinvoicelisting',async (req,res)=>{
     try{
         const invoices=await Invoice.find();
         res.json({
@@ -51,7 +53,7 @@ router.get('/invoiceListing',async (req,res)=>{
     }
 })
 
-router.get('/getinvoice/:number', getInvoiceByNumber, (req,res)=>{
+router.get('/invoicelisting/:number/false', getInvoiceByNumber, (req,res)=>{
     res.send(res.invoiceInfo);
 })
 
@@ -64,7 +66,7 @@ router.get('/j_spring_security_check',authenticateUser,(req,res)=>{
     res.send(res.profile);
 })
 
-router.get('/orderListing',async (req,res)=>{
+router.get('/selfcareorderlisting',async (req,res)=>{
     try{
         const orders = await Order.find();
         res.json({
@@ -80,7 +82,7 @@ router.get('/orderListing',async (req,res)=>{
     }
 })
 
-router.get('/getorder/:number', async (req, res) => {
+router.get('orderdetails/:number', async (req, res) => {
     res.send(res.orderInfo);
 });
 
