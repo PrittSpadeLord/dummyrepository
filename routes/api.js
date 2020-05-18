@@ -18,12 +18,7 @@ router.get('/subscriptionListing', async (req,res)=>{
 
     try{
         const subscriptions=await Subscription.find();
-        res.json({ "accessDenied": false,
-        "successful": true,
-        "locale": null,
-        "clientValidationErrorInfo":[] ,
-        "clientSubscriptionInfoList":subscriptions
-        });
+        res.send(subscriptions);
     }
     catch{
         res.status(500).json({message:err.message});
@@ -37,16 +32,7 @@ router.get('/getsubscription/:id',getSubscriptionById,(req,res)=>{
 router.get('/selfcareinvoicelisting',async (req,res)=>{
     try{
         const invoices=await Invoice.find();
-        res.json({
-            "accessDenied": false,
-            "successful": true,
-            "locale": null,
-            "clientValidationErrorInfo": [],
-            "clientInvoiceInfoList": invoices,
-            "paymentProfRefKey": null,
-            "currencyCode": null,
-            "opgEnabled": false
-        });
+        res.send(invoices)
     }
     catch(err){
         res.status(500).json({message:err.message});

@@ -4,28 +4,32 @@ GET http://localhost:3000/api/subscriptionListing
 ###
 POST http://localhost:3000/api
 Content-Type: application/json
-
+ 
 {
-           "accessDenied": false,
-            "successful": true,
-            "locale": null,
-            "clientValidationErrorInfo": [],
-            "charge": null,
-            "activationStart": 1520371000000,
-            "renewDate": 1522591000000,
-            "activationEnd": null,
-            "identifier": "SUB332-Test-product",
-            "subsServiceInstanceId": 2602,
-            "subscriptionType": "MONTHLY",
-            "productDescription": "<p>Test-product<br></p>",
-            "productImage": null,
-            "quantity": 1,
-            "currencySymbol": "$",
-            "statusString": "ACTIVE",
-            "serviceTypeId": 1244,
-            "bundleSubscriptionInstances": null,
-            "bundled": false
+         "accessDenied":false,
+         "successful":true,
+         "locale":null,
+         "clientValidationErrorInfo":[
+
+         ],
+         "charge":null,
+         "activationStart":1588662000000,
+         "renewDate":1590994800000,
+         "activationEnd":null,
+         "identifier":"T2M-37722-LH Transport",
+         "subsServiceInstanceId":"38205",
+         "subscriptionType":"MONTHLY",
+         "productDescription":"LH Transport",
+         "productImage":"images/product-image.png",
+         "quantity":1.0000000000,
+         "currencySymbol":null,
+         "statusString":"ACTIVE",
+         "serviceTypeId":null,
+         "bundleSubscriptionInstances":[],
+         "bundled":false
 }
+
+
 
 ###
 
@@ -230,4 +234,4 @@ Content-Type: application/json
             "fileName": null,
             "savedInCloud": false,
             "payTmEnabled": false
-        }
+    }
