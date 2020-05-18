@@ -19,4 +19,4 @@ const onebillRouter = require('./routes/api');
 app.use('/api', onebillRouter);
 
 var port = process.env.PORT||3214;
-app.listen(port, ()=>console.log(`http://localhost:${port}`));
+app.listen(port, ()=>console.log(`Listening! Please visit http://localhost:${port}/api once database is connected.`));

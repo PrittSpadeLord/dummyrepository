@@ -15,6 +15,10 @@ const Order = require('../models/order.js');
 const OrderInfo = require('../models/orderInfo.js');
 const getOrderByNumber = require('../middleware/getOrder.js');
 
+router.get('/', (req, res) => {
+    res.send('Welcome to dummy API. This api with url link "http://localhost:3214/api/" mirrors the actual api "https://app.onebillsoftware.com/web/selfcare-rest/".');
+})
+
 router.get('/subscriptionListing', async (req,res)=>{
     try{
         const subscriptions=await Subscription.find();
