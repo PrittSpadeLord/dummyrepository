@@ -9,13 +9,13 @@ const getInvoiceByNumber = require('../middleware/getInvoice.js')
 const getProfile=require('../middleware/getProfile.js')
 const authenticateUser=require('../middleware/authenticateUser.js')
 const Profile=require('../models/profile.js')
+const Payment = require('../models/payment.js');
+const getPaymentByNumber = require('../middleware/getPayment.js');
 const Order = require('../models/order.js');
 const OrderInfo = require('../models/orderInfo.js');
 const getOrderByNumber = require('../middleware/getOrder.js');
 
 router.get('/subscriptionListing', async (req,res)=>{
-    console.log(req.headers);
-
     try{
         const subscriptions=await Subscription.find();
         res.send(subscriptions);
@@ -50,6 +50,28 @@ router.get('/profileDetails/:username',getProfile,(req,res)=>{
 
 router.get('/j_spring_security_check',authenticateUser,(req,res)=>{
     res.send(res.profile);
+})
+
+router.get('/payments', async (req, res) => {
+    try{
+        const payments = await Payment.find();
+        res.json({
+            "accessDenied": false,
+            "successful": true,
+            "locale": null,
+            "clientValidationErrorInfo": [],
+            "clientPaymentInfo": payments,
+            "fileName": null,
+            "fileContent": null
+        });
+    }
+    catch(err){
+        res.status(500).json({message:err.message});
+    }
+});
+
+router.get('//payments/:number/:paymentSourceType', getPaymentByNumber, (req, res) => {
+    res.send(res.paymentInfo);
 })
 
 router.get('/selfcareorderlisting',async (req,res)=>{

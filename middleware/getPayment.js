@@ -11,7 +11,7 @@ async function getPaymentByNumber(req, res, next){
         }
     }
     catch(err){
-        retutn res.status(500).json({message: err.message});
+        return res.status(500).json({message: err.message});
     }
 
     res.paymentInfo = {
