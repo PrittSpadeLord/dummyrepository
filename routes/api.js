@@ -94,17 +94,13 @@ router.get('/selfcareorderlisting',async (req,res)=>{
     }
 })
 
-router.get('orderdetails/:number', async (req, res) => {
+router.get('/orderdetails/:number', async (req, res) => {
     res.send(res.orderInfo);
 });
 
-
-
-
-
-
-
-
+router.get('/nothing', (req, res) => {
+    res.json([]);
+}) 
 
 //Input data
 router.post('/',async (req,res)=>{
